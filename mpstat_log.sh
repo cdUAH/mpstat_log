@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Cooper Deitzler cooper.l.deitzler@nasa.gov
+# Cooper Deitzler
 # 3/3/25
 
 # Check if a log directory is provided as an argument
