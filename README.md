@@ -1,6 +1,6 @@
 # mpstat_log README
 
-*Built by cdUAH, 3/2025. Use, edit, and modify as needed with proper crediting*
+*Built by cdUAH, 3/2025. Use, edit, and modify as needed with proper crediting. Last Edit: 3/20/2025*
 
 This script combo allows you to monitor and log CPU usage, and then process and visualize it using MatPlot. 
 From the user perspective, you'll need to make a few edits to the code depending on your system. I hope to later add a 
@@ -59,7 +59,7 @@ do the following steps):
 
 ## Reading the data
 You will get a data output akin to the following: \
-/enter the path needed here/.\
+![mpstat_log/images/results1.PNG](images/results1.PNG) \
 NOTE: I'm not a data scientist, so if you know better ways to present data, please edit the code...
 1) The top plot is showing averaged CPU Idle percent. The top of the chart is 100% idle (No CPU load).
    - NOTE: The accuracy/granularity of this is impacted by `rolling_window = max(1, len(df1) // 500)`
