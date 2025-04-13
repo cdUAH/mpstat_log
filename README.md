@@ -1,6 +1,6 @@
 # mpstat_log README
 
-*Built by cdUAH, 3/2025. Use, edit, and modify as needed with proper crediting. Last Edit: 3/20/2025*
+*Built by cldeitzler, 3/2025. Use, edit, and modify as needed with proper crediting. Last Edit: 4/13/2025*
 
 This script combo allows you to monitor and log CPU usage, and then process and visualize it using MatPlot. 
 From the user perspective, you'll need to make a few edits to the code depending on your system. I hope to later add a 
