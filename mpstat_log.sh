@@ -19,13 +19,13 @@ LOG_DIR="$LOG_DIR_INIT/logs" # safety to ensure all logs are in new unique log d
 CORES="$2" # User adds what cores (htop or alternative to see)
 mkdir -p "$LOG_DIR"
 DIAG_FILE="$LOG_DIR/mpstat_diag.log"
-LOG_HEADER="[SCRIPT] [$(date '+%Y-%m-%d %H:%M:%S')]"
+
 
 # Function to check log file size and rotate if needed. Fails over to new log file after 1GB
 rotate_log() {
     if [ ! -f "$LOG_FILE" ] || [ $(stat -c%s "$LOG_FILE") -ge $MAX_SIZE ]; then
         LOG_FILE="$LOG_DIR/mpstat_log_$(date +%m%d%Y%).log"
-        echo "$LOG_HEADER Created new file $LOG_FILE based on max size: $MAX_SIZE MB" >> $DIAG_FILE #echo status to diag_log
+        echo "[SCRIPT] [$(date '+%Y-%m-%d %H:%M:%S')] Created new file $LOG_FILE based on max size: $MAX_SIZE MB" >> $DIAG_FILE #echo status to diag_log
     fi
 }
 
@@ -35,9 +35,9 @@ cleanup_log(){
 
     if (( count > MAX_FILES )); then
         PRIME_DELETE_FILE=$(ls -1t "$LOG_DIR"/*.log | tail -n +$((MAX_FILES + 1))) # get file for deletion
-        echo "$LOG_HEADER Routine DELETE file: $PRIME_DELETE_FILE based on max size: $MAX_SIZE MB and max files: $MAX_FILES" >> $DIAG_FILE #echo status to diag_log
+        echo "[SCRIPT] [$(date '+%Y-%m-%d %H:%M:%S')] Routine DELETE file: $PRIME_DELETE_FILE based on max size: $MAX_SIZE MB and max files: $MAX_FILES" >> $DIAG_FILE #echo status to diag_log
         ls -1t "$LOG_DIR"/*.log | tail -n +$((MAX_FILES + 1)) | xargs rm -f
-        echo "$LOG_HEADER Delete completed"
+        echo "[SCRIPT] [$(date '+%Y-%m-%d %H:%M:%S')] Delete completed" >> $DIAG_FILE
     fi
 }
 # Function to log mpstat output.
@@ -52,6 +52,7 @@ dump_mpstat() {
     echo "" >> "$LOG_FILE"
 }
 loop() {
+
 # Logs until stopped
 while true; do
     dump_mpstat
